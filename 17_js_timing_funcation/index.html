@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
+    <style>
+        .second{
+            animation: clock 1s infinite;
+            transform: rotateX(90deg);
+            transform-origin: top;    
+        }
+        @keyframes clock {
+            from{
+                 transform: rotateX(90deg);
+            }
+            to{
+                 transform: rotateX(0deg);
+            }
+        }
+
+        .minuteAnim{
+            animation: clock1 1s infinite;
+            transform: rotateX(90deg);
+            transform-origin: top;    
+        }
+        @keyframes clock1 {
+            from{
+                 transform: rotateX(90deg);
+            }
+            to{
+                 transform: rotateX(0deg);
+            }
+        }
+
+        .shake{
+            animation: shaking 0.1s infinite linear alternate;
+        }
+        @keyframes shaking {
+            from{
+                transform:  rotate(-10deg);
+            }
+            to{
+                transform:  rotate(10deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <button class="btn btn-dark">count- <span class="badge text-bg-light counter">1</span></button>
+        <button class="btn btn-sm btn-info stop">Stop</button>
+    </div>
+
+    <div class="container my-5 border p-5">
+        <div class="shadow p-2 d-flex gap-1" style="width: 200px;">
+            <div class="rounded py-1 px-2 shadow border hour">02</div>
+            <div class="rounded py-1 px-2 shadow border minute">02</div>
+            <div class="rounded py-1 px-2 shadow border second">24</div>
+        </div>
+    </div>
+
+    <div class="container my p-5">
+        <div class="d-flex gap-2">
+            <input type="number" placeholder="Enter Time" class="form-control form-control-sm timeNumber">  <button class="btn btn-sm btn-info start" onclick="startTimer()">Start</button>
+        </div>
+        <img src="https://img.freepik.com/premium-vector/round-wall-clock-cartoon_119631-491.jpg?semt=ais_hybrid&w=740" style="width: 200px;" class="m-5" id="clock" alt="">
+
+        <audio id="aud" src="assets/alarm.mp3"></audio>
+    </div>
+    
+</body>
+
+
+
+
+
+<script src="index.js"></script>
+
+
+
+
+
+
+
+
+<script>
+let counter = document.querySelector(".counter");
+let stop = document.querySelector(".stop");
+
+
+let alert = setTimeout(timeout, 4000)
+function timeout(){
+    // window.alert("time out")
+}
+
+let count = 1
+
+let timer = setInterval(function(){
+     count++;
+    counter.textContent = count;
+}, 1000);
+
+
+stop.onclick = function(){
+    clearInterval(timer)
+    clearTimeout(alert)
+}
+
+
+</script>
+</html>
